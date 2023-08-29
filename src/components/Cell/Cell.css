@@ -1,0 +1,21 @@
+.cell {
+  border: none;
+  background-color: white;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.red {
+  background-color: red;
+}
+
+.cell:hover {
+  box-shadow: 0px 0px 15px #888;
+}
