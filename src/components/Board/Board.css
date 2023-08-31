@@ -1,16 +1,4 @@
 .board {
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); */
-  /* grid-auto-rows: 50px; */
-  /* grid-auto-columns: 50px; */
-  /* grid-gap: 5px; */
-  /* gap: 20px; */
-  /* width: 100px;
-  height: 100px; */
-  /* max-width: 400px; */
-  /* margin-top: 20px; */
-  /* column-gap: 20px; */
-  /* background-color: aquamarine; */
   display: grid;
   background-color: #0fabbc;
   height: fit-content;

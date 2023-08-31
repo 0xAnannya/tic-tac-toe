@@ -14,33 +14,21 @@
   padding: 30px;
 }
 
-button {
-  box-shadow: -4px -4px 0 0 black;
-}
-
-.setTiles button {
-  border: none;
-  box-shadow: none;
-}
-
 .winner {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
-.winner button {
-  box-shadow: none;
+
+img {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
 }
-.playerTurn {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.playerOne {
-  color: red;
-  text-decoration: underline;
-}
-.playerTwo {
-  color: yellow;
-  text-decoration: underline;
+.restartGame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  align-items: flex-start;
 }

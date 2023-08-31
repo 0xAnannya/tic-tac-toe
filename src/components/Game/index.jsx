@@ -4,6 +4,7 @@ import Board from "../Board";
 import { Alert } from "@material-ui/lab";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
+import RestartImage from "../../assets/restartImage.jpeg";
 
 const Game = () => {
   const [tiles, setTiles] = useState(3);
@@ -12,6 +13,7 @@ const Game = () => {
   const [winner, setWinner] = useState(null);
   const [draw, setDraw] = useState(false);
   const { width, height } = useWindowSize();
+  const [gameStarted, setGamestarted] = useState(false);
 
   useEffect(() => {
     setWinner(null);
@@ -93,6 +95,7 @@ const Game = () => {
   };
 
   const handleClick = (row, col) => {
+    setGamestarted(true);
     if (board[row][col] != "") {
       return;
     }
@@ -108,51 +111,60 @@ const Game = () => {
     // lets check if there is a winner or draw
     if (checkWin(currentPlayer, row, col, newBoard)) {
       setWinner(currentPlayer);
-      // restartGame();
     } else if (isDraw(newBoard)) {
       setDraw(true);
     }
   };
 
   const restartGame = () => {
+    setGamestarted(false);
     setBoard(Array(tiles).fill(Array(tiles).fill("")));
     setCurrentPlayer("yellow");
     setWinner(null);
     setDraw(false);
   };
   return (
-    <div className="gameContainer">
-      <h2>Tic Tac Toe</h2>
-      <div className="setTiles">
-        <button onClick={() => handleCountChange(-1)}>-</button>
-        <p>Cells: {tiles}</p>
-        <button onClick={() => handleCountChange(1)}>+</button>
+    <>
+      <div className="restartGame">
+        <img src={RestartImage} onClick={restartGame}></img>
       </div>
+      <div className="gameContainer">
+        <h2>Tic Tac Toe</h2>
+        {!gameStarted && (
+          <div className="setTiles">
+            <button onClick={() => handleCountChange(-1)}>-</button>
+            <p>Cells: {tiles}</p>
+            <button onClick={() => handleCountChange(1)}>+</button>
+          </div>
+        )}
 
-      <div className="board">
-        <Board
-          handleCellClick={handleClick}
-          currentPlayer={currentPlayer}
-          board={board}
-        />
-      </div>
-      {winner && (
-        <>
-          {" "}
+        {!winner && <div>Player Turn: {currentPlayer}</div>}
+
+        <div className="board">
+          <Board
+            handleCellClick={handleClick}
+            currentPlayer={currentPlayer}
+            board={board}
+            winner={winner}
+          />
+        </div>
+        {winner && (
+          <>
+            <div className="winner">
+              <Alert severity="success">{winner} player wins the game</Alert>
+              <button onClick={restartGame}>Restart Game</button>
+            </div>
+            <Confetti width={width} height={height} />
+          </>
+        )}
+        {draw && (
           <div className="winner">
-            <Alert severity="success">{winner} player wins the game</Alert>
+            <Alert severity="info">Draw Match</Alert>
             <button onClick={restartGame}>Restart Game</button>
           </div>
-          <Confetti width={width} height={height} />
-        </>
-      )}
-      {draw && (
-        <div className="winner">
-          <Alert severity="info">Draw Match</Alert>
-          <button onClick={restartGame}>Restart Game</button>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

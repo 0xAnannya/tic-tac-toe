@@ -1,7 +1,5 @@
-/* App.css */
 * {
   box-sizing: border-box;
-  /* background-color: #d1eecc; */
 }
 .app {
   display: flex;
@@ -16,9 +14,4 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #2980b9;
 }
