@@ -10,7 +10,7 @@
   row-gap: 20px;
 }
 
-.row {
+.board__row {
   display: flex;
   flex-direction: row;
   justify-content: center;

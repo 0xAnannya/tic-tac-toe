@@ -1,4 +1,4 @@
-.setTiles {
+.gameContainer__tiles {
   column-gap: 10px;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
   padding: 30px;
 }
 
-.winner {
+.gameContainer_winMessage {
   display: flex;
   flex-direction: column;
   row-gap: 20px;

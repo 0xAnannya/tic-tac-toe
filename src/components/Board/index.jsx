@@ -5,7 +5,7 @@ import Cell from "../Cell";
 const Board = ({ handleCellClick, board, winner }) => (
   <div className="board">
     {board.map((row, rowIndex) => (
-      <div key={rowIndex} className="row">
+      <div key={rowIndex} className="board__row">
         {row.map((color, colIndex) => (
           <Cell
             key={colIndex}

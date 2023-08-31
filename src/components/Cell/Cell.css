@@ -9,12 +9,12 @@
   box-shadow: 3px 2px 3px 0 black inset;
 }
 
-.yellow {
+.cell--yellow {
   background-color: yellow;
   box-shadow: -4px -4px 0 0 black;
 }
 
-.red {
+.cell--red {
   background-color: red;
   box-shadow: -4px -4px 0 0 black;
 }

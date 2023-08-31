@@ -13,7 +13,7 @@ const Game = () => {
   const [winner, setWinner] = useState(null);
   const [draw, setDraw] = useState(false);
   const { width, height } = useWindowSize();
-  const [gameStarted, setGamestarted] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
 
   useEffect(() => {
     setWinner(null);
@@ -95,7 +95,7 @@ const Game = () => {
   };
 
   const handleClick = (row, col) => {
-    setGamestarted(true);
+    setGameStarted(true);
     if (board[row][col] != "") {
       return;
     }
@@ -117,7 +117,7 @@ const Game = () => {
   };
 
   const restartGame = () => {
-    setGamestarted(false);
+    setGameStarted(false);
     setBoard(Array(tiles).fill(Array(tiles).fill("")));
     setCurrentPlayer("yellow");
     setWinner(null);
@@ -131,7 +131,7 @@ const Game = () => {
       <div className="gameContainer">
         <h2>Tic Tac Toe</h2>
         {!gameStarted && (
-          <div className="setTiles">
+          <div className="gameContainer__tiles">
             <button onClick={() => handleCountChange(-1)}>-</button>
             <p>Cells: {tiles}</p>
             <button onClick={() => handleCountChange(1)}>+</button>
@@ -140,17 +140,15 @@ const Game = () => {
 
         {!winner && <div>Player Turn: {currentPlayer}</div>}
 
-        <div className="board">
-          <Board
-            handleCellClick={handleClick}
-            currentPlayer={currentPlayer}
-            board={board}
-            winner={winner}
-          />
-        </div>
+        <Board
+          handleCellClick={handleClick}
+          currentPlayer={currentPlayer}
+          board={board}
+          winner={winner}
+        />
         {winner && (
           <>
-            <div className="winner">
+            <div className="gameContainer_winMessage">
               <Alert severity="success">{winner} player wins the game</Alert>
               <button onClick={restartGame}>Restart Game</button>
             </div>
@@ -158,7 +156,7 @@ const Game = () => {
           </>
         )}
         {draw && (
-          <div className="winner">
+          <div className="gameContainer_winMessage">
             <Alert severity="info">Draw Match</Alert>
             <button onClick={restartGame}>Restart Game</button>
           </div>
